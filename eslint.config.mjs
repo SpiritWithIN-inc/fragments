@@ -9,6 +9,11 @@ const compat = new FlatCompat({
 const config = [
   ...compat.extends('next/core-web-vitals'),
   {
+    settings: {
+      next: {
+        rootDir: '.',
+      },
+    },
     rules: {
       'react-hooks/immutability': 'off',
       'react-hooks/set-state-in-effect': 'off',
