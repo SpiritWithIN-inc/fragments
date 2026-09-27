@@ -6,7 +6,7 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint . --ignore-pattern .next --ignore-pattern out --ignore-pattern build --ignore-pattern coverage"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^1.1.6",
