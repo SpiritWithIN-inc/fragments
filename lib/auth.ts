@@ -69,9 +69,9 @@ export function useAuth(
             data: { is_fragments_user: true },
           })
         }
-        posthog.identify(session?.user.id, {
-          email: session?.user.email,
-          supabase_id: session?.user.id,
+        posthog.identify(session.user.id, {
+          email: session.user.email,
+          supabase_id: session.user.id,
         })
         posthog.capture('sign_in')
       }
@@ -92,17 +92,17 @@ export function useAuth(
         recovery = false
       }
 
-      if (_event === 'SIGNED_IN' && !recovery) {
+      if (_event === 'SIGNED_IN' && !recovery && session) {
         setAuthDialog(false)
-        getUserAPIKey(session as Session).then(setApiKey)
-        if (!session?.user.user_metadata.is_fragments_user) {
+        getUserAPIKey(session).then(setApiKey)
+        if (!session.user.user_metadata.is_fragments_user) {
           supabase?.auth.updateUser({
             data: { is_fragments_user: true },
           })
         }
-        posthog.identify(session?.user.id, {
-          email: session?.user.email,
-          supabase_id: session?.user.id,
+        posthog.identify(session.user.id, {
+          email: session.user.email,
+          supabase_id: session.user.id,
         })
         posthog.capture('sign_in')
       }
